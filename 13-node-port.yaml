@@ -14,7 +14,7 @@ spec:
   - protocol: TCP
     port: 80 #service port
     targetPort: 80
-    nodeport: 30007 # Instead of updating sg of node serves with node port's ephemeral port number, we can simply give the node port's port number here.
+    nodePort: 30007 # Instead of updating sg of node serves with node port's ephemeral port number, we can simply give the node port's port number here.
 ---
 kind: Pod
 apiVersion: v1
