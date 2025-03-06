@@ -26,6 +26,25 @@ spec:
     spec: 
       containers:
       - name: nginx
-        image: nginx:1.14.2
+        image: rajavamshi007/deployment:1.0 
         ports:
         - containerPort: 80
+
+---
+#Load Balancer to expose our application to the public access.
+
+kind: Service
+apiVersion: v1
+metadata: 
+  name: nginx       
+spec: 
+  type: LoadBalancer
+  selector: #Labels are used as seletors
+    app: nginx
+    tier: frontend
+    purpose: deployment
+  ports:
+  - protocol: TCP
+    port: 80 #service port
+    targetPort: 80
+    nodePort: 30007 
